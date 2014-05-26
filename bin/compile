@@ -21,8 +21,8 @@ libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
 
 tmate_version="1.8.9"
 tmate_dir="tmate-${tmate_version}"
-tmate_file="${tmate_version}.tar.gz"
-tmate_url="https://github.com/nviennot/tmate/archive/${tmate_file}"
+tmate_file="tmate-${tmate_version}.tar.gz"
+tmate_url="https://codeload.github.com/nviennot/tmate/tar.gz/${tmate_version}"
 
 cache_target=${cache}/${tmate_file}
 build_target=${build}/.local
