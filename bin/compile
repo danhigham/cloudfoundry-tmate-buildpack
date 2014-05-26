@@ -38,6 +38,8 @@ cache_target=${cache}/${tmate_file}
 build_target=${build}/.local
 target=/app/.local
 
+export PATH=$PATH:/app/.local/bin:/app/.local
+
 if [ ! -f ${cache_target} ]; then
   echo "=====> No cached compile detected. Bulding..."
   cd $build
