@@ -50,4 +50,4 @@ mkdir -p ${build_target}
 tar xzf ${cache_target} -C ${build_target}
 
 mkdir -p $build/.profile.d
-echo 'LD_LIBRARY_PATH=/app/.local/lib' > $build/.profile.d/tmate.sh
+echo 'export LD_LIBRARY_PATH=/app/.local/lib' > $build/.profile.d/tmate.sh
