@@ -24,6 +24,11 @@ autoconf_dir="autoconf-${autoconf_version}"
 autoconf_file="${autoconf_dir}.tar.gz"
 autoconf_url="ftp://ftp.gnu.org/gnu/autoconf/autoconf-{$autoconf_version}.tar.gz"
 
+automake_version="1.14"
+automake_dir="automake-${autoconf_version}"
+automake_file="${autoconf_dir}.tar.gz"
+automake_url="ftp://ftp.gnu.org/gnu/automake/automake-{$automake_version}.tar.gz"
+
 tmate_version="1.8.9"
 tmate_dir="tmate-${tmate_version}"
 tmate_file="tmate-${tmate_version}.tar.gz"
@@ -51,6 +56,15 @@ if [ ! -f ${cache_target} ]; then
   curl -s ${autoconf_url} > ${autoconf_file}
   tar zxf ${autoconf_file}
   cd ${autoconf_dir}
+  ./configure --prefix=${target} | indent
+  make install | indent
+  cd ..
+
+  echo "-----> Compiling automake v${automake_version}..."
+  #Compile automake
+  curl -s ${automake_url} > ${automake_file}
+  tar zxf ${automake_file}
+  cd ${automake_dir}
   ./configure --prefix=${target} | indent
   make install | indent
   cd ..
