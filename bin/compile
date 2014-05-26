@@ -19,6 +19,11 @@ libe_dir="libevent-${libe_version}-stable"
 libe_file="${libe_dir}.tar.gz"
 libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
 
+autoconf_version="2.68"
+autoconf_dir="autoconf-${autoconf_version}"
+autoconf_file="${autoconf_dir}.tar.gz"
+autoconf_url="ftp://ftp.gnu.org/gnu/autoconf/autoconf-{$autoconf_version}.tar.gz"
+
 tmate_version="1.8.9"
 tmate_dir="tmate-${tmate_version}"
 tmate_file="tmate-${tmate_version}.tar.gz"
@@ -29,10 +34,10 @@ build_target=${build}/.local
 target=/app/.local
 
 if [ ! -f ${cache_target} ]; then
-  echo "No cached compile detected. Bulding..." | indent
+  echo "=====> No cached compile detected. Bulding..."
   cd $build
 
-  echo "Compiling libevent v${libe_version}..." | indent
+  echo "-----> Compiling libevent v${libe_version}..."
   #Compile libevent
   curl -s ${libe_url} > ${libe_file}
   tar zxf ${libe_file}
@@ -41,8 +46,17 @@ if [ ! -f ${cache_target} ]; then
   make install | indent
   cd ..
 
+  echo "-----> Compiling autoconf v${autoconf_version}..."
+  #Compile autoconf
+  curl -s ${autoconf_url} > ${autoconf_file}
+  tar zxf ${autoconf_file}
+  cd ${autoconf_dir}
+  ./configure --prefix=${target} | indent
+  make install | indent
+  cd ..
+
   # download or install tmate
-  echo "Compiling tmate v${tmate_version}..." | indent
+  echo "-----> Compiling tmate v${tmate_version}..."
 
   #Compile tmate
   curl -s ${tmate_url} > ${tmate_file}
