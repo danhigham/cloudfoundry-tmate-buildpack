@@ -19,20 +19,20 @@ libe_dir="libevent-${libe_version}-stable"
 libe_file="${libe_dir}.tar.gz"
 libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
 
-autoconf_version="2.68"
-autoconf_dir="autoconf-${autoconf_version}"
-autoconf_file="${autoconf_dir}.tar.gz"
-autoconf_url="ftp://ftp.gnu.org/gnu/autoconf/autoconf-{$autoconf_version}.tar.gz"
-
-automake_version="1.14"
-automake_dir="automake-${automake_version}"
-automake_file="${automake_dir}.tar.gz"
-automake_url="ftp://ftp.gnu.org/gnu/automake/automake-{$automake_version}.tar.gz"
-
-tmate_version="1.8.9"
-tmate_dir="tmate-${tmate_version}"
-tmate_file="tmate-${tmate_version}.tar.gz"
-tmate_url="https://codeload.github.com/nviennot/tmate/tar.gz/${tmate_version}"
+# autoconf_version="2.68"
+# autoconf_dir="autoconf-${autoconf_version}"
+# autoconf_file="${autoconf_dir}.tar.gz"
+# autoconf_url="ftp://ftp.gnu.org/gnu/autoconf/autoconf-{$autoconf_version}.tar.gz"
+#
+# automake_version="1.14"
+# automake_dir="automake-${automake_version}"
+# automake_file="${automake_dir}.tar.gz"
+# automake_url="ftp://ftp.gnu.org/gnu/automake/automake-{$automake_version}.tar.gz"
+#
+# tmate_version="1.8.9"
+# tmate_dir="tmate-${tmate_version}"
+# tmate_file="tmate-${tmate_version}.tar.gz"
+# tmate_url="https://codeload.github.com/nviennot/tmate/tar.gz/${tmate_version}"
 
 cache_target=${cache}/${tmate_file}
 build_target=${build}/.local
@@ -53,39 +53,39 @@ if [ ! -f ${cache_target} ]; then
   make install | indent
   cd ..
 
-  echo "-----> Compiling autoconf v${autoconf_version}..."
-  #Compile autoconf
-  curl -s ${autoconf_url} > ${autoconf_file}
-  tar zxf ${autoconf_file}
-  cd ${autoconf_dir}
-  ./configure --prefix=${target} | indent
-  make install | indent
-  cd ..
+  # echo "-----> Compiling autoconf v${autoconf_version}..."
+  # #Compile autoconf
+  # curl -s ${autoconf_url} > ${autoconf_file}
+  # tar zxf ${autoconf_file}
+  # cd ${autoconf_dir}
+  # ./configure --prefix=${target} | indent
+  # make install | indent
+  # cd ..
+  #
+  # echo "-----> Compiling automake v${automake_version}..."
+  # #Compile automake
+  # curl -s ${automake_url} > ${automake_file}
+  # tar zxf ${automake_file}
+  # cd ${automake_dir}
+  # ./configure --prefix=${target} | indent
+  # make install | indent
+  # cd ..
+  #
+  # # download or install tmate
+  # echo "-----> Compiling tmate v${tmate_version}..."
+  #
+  # #Compile tmate
+  # curl -s ${tmate_url} > ${tmate_file}
+  # tar zxf ${tmate_file}
+  # cd ${tmate_dir}
+  # ./autogen.sh | indent
+  # ./configure --prefix=${target} | indent
+  # make | indent
+  # make install | indent
+  # cd ..
 
-  echo "-----> Compiling automake v${automake_version}..."
-  #Compile automake
-  curl -s ${automake_url} > ${automake_file}
-  tar zxf ${automake_file}
-  cd ${automake_dir}
-  ./configure --prefix=${target} | indent
-  make install | indent
-  cd ..
-
-  # download or install tmate
-  echo "-----> Compiling tmate v${tmate_version}..."
-
-  #Compile tmate
-  curl -s ${tmate_url} > ${tmate_file}
-  tar zxf ${tmate_file}
-  cd ${tmate_dir}
-  ./autogen.sh | indent
-  ./configure --prefix=${target} | indent
-  make | indent
-  make install | indent
-  cd ..
-
-  # download go proxy
-
+  # download tmate
+  curl -s https://s3.amazonaws.com/tmate-buildpack-assets/tmate > ${target}/bin/tmate
 
   #Create cache slug
   tar czf ${cache_target} -C ${target} .
