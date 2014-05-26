@@ -53,4 +53,4 @@ mkdir -p $build/.profile.d
 echo 'export LD_LIBRARY_PATH=/app/.local/lib' > $build/.profile.d/tmate.sh
 echo 'mkdir -p /app/.ssh' >> $build/.profile.d/tmate.sh
 echo 'export TERM=xterm' >> $build/.profile.d/tmate.sh
-echo 'ssh-keygen -q -t rsa -f /app/.ssh/id_rsa -N ""' >> $build/.profile.d/tmate.sh
+echo 'ssh-keygen -q -t rsa -f /home/vcap/.ssh/id_rsa -N ""' >> $build/.profile.d/tmate.sh
