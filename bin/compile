@@ -25,8 +25,8 @@ autoconf_file="${autoconf_dir}.tar.gz"
 autoconf_url="ftp://ftp.gnu.org/gnu/autoconf/autoconf-{$autoconf_version}.tar.gz"
 
 automake_version="1.14"
-automake_dir="automake-${autoconf_version}"
-automake_file="${autoconf_dir}.tar.gz"
+automake_dir="automake-${automake_version}"
+automake_file="${automake_dir}.tar.gz"
 automake_url="ftp://ftp.gnu.org/gnu/automake/automake-{$automake_version}.tar.gz"
 
 tmate_version="1.8.9"
