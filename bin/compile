@@ -35,7 +35,7 @@ libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
 # tmate_url="https://codeload.github.com/nviennot/tmate/tar.gz/${tmate_version}"
 
 cache_target=${cache}/${tmate_file}
-build_target=${build}/.local
+build_target=${build}
 target=/app/.local
 
 if [ ! -f ${cache_target} ]; then
