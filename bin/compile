@@ -19,6 +19,11 @@ libe_dir="libevent-${libe_version}-stable"
 libe_file="${libe_dir}.tar.gz"
 libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
 
+tmate_version="1.8.9"
+tmate_dir="tmate-${tmate_version}"
+tmate_file="${tmate_version}.tar.gz"
+tmate_url="https://github.com/nviennot/tmate/archive/${tmate_file}"
+
 cache_target=${cache}/${tmate_file}
 build_target=${build}/.local
 target=/app/.local
@@ -37,7 +42,17 @@ if [ ! -f ${cache_target} ]; then
   cd ..
 
   # download or install tmate
+  echo "Compiling tmate v${tmate_version}..." | indent
 
+  #Compile tmate
+  curl -s ${tmate_url} > ${tmate_file}
+  tar zxf ${tmate_file}
+  cd ${tmate_dir}
+  ./autogen.sh | indent
+  ./configure --prefix=${target} | indent
+  make | indent
+  make install | indent
+  cd ..
 
   # download go proxy
 
