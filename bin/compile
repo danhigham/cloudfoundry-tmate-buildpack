@@ -38,8 +38,6 @@ cache_target=${cache}/${tmate_file}
 build_target=${build}/.local
 target=/app/.local
 
-export PATH=$PATH:/app/.local/bin:/app/.local
-
 if [ ! -f ${cache_target} ]; then
   echo "=====> No cached compile detected. Bulding..."
   cd $build
@@ -66,10 +64,10 @@ mkdir -p ${build_target}
 tar xzf ${cache_target} -C ${build_target}
 
 chmod +x ${build_target}/bin/tmate
+ln -s ${build_target}/bin/tmate /home/vcap/app/bin
 
 mkdir -p $build/.profile.d
 echo 'export PATH=$PATH:/app/.local/bin' > $build/.profile.d/tmate.sh
 echo 'export LD_LIBRARY_PATH=/app/.local/lib' > $build/.profile.d/tmate.sh
-echo 'mkdir -p /app/.ssh' >> $build/.profile.d/tmate.sh
 echo 'export TERM=screen-256color' >> $build/.profile.d/tmate.sh
 echo 'ssh-keygen -q -t rsa -f /home/vcap/.ssh/id_rsa -N ""' >> $build/.profile.d/tmate.sh
