@@ -67,7 +67,7 @@ chmod +x ${build_target}/bin/tmate
 ln -s ${build_target}/bin/tmate /home/vcap/app
 
 mkdir -p $build/.profile.d
-echo 'export PATH=$PATH:/app/.local/bin' > $build/.profile.d/tmate.sh
-echo 'export LD_LIBRARY_PATH=/app/.local/lib' > $build/.profile.d/tmate.sh
+echo 'export PATH=$PATH:/app/bin' > $build/.profile.d/tmate.sh
+echo 'export LD_LIBRARY_PATH=/app/lib' > $build/.profile.d/tmate.sh
 echo 'export TERM=screen-256color' >> $build/.profile.d/tmate.sh
 echo 'ssh-keygen -q -t rsa -f /home/vcap/.ssh/id_rsa -N ""' >> $build/.profile.d/tmate.sh
