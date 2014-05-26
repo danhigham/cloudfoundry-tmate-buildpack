@@ -30,16 +30,16 @@ if [ ! -f ${cache_target} ]; then
   echo "No cached compile detected. Bulding..." | indent
   cd $build
 
-  echo "Compiling cmake v${cmake_version}..." | indent
-  #Compile cmake
-  curl -s ${cmake_url} > ${cmake_file}
-  tar zxf ${cmake_file}
-  cd ${cmake_tar_dir}
-  ./bootstrap --prefix=${target} | indent
-  make | indent
-  make install | indent
-  PATH=${target}/bin:$PATH
-  cd ..
+  # echo "Compiling cmake v${cmake_version}..." | indent
+  # #Compile cmake
+  # curl -s ${cmake_url} > ${cmake_file}
+  # tar zxf ${cmake_file}
+  # cd ${cmake_tar_dir}
+  # ./bootstrap --prefix=${target} | indent
+  # make | indent
+  # make install | indent
+  # PATH=${target}/bin:$PATH
+  # cd ..
 
   echo "Compiling libevent v${libe_version}..." | indent
   #Compile libevent
@@ -51,7 +51,7 @@ if [ ! -f ${cache_target} ]; then
   cd ..
 
   # download or install tmate
-  
+
 
   # download go proxy
 
