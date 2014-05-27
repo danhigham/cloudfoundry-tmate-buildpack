@@ -45,3 +45,8 @@ $ cf logs tmate-test --recent
 ```
 $ ssh gd************DdV@ny.tmate.io
 ```
+
+Even better, hand the URL out to your friends and collaborate on a tmate session!
+
+Be aware that when a participant exits the shell, the session is done. However,
+to start it again, just restart the app!
