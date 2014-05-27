@@ -56,10 +56,8 @@ tar xzf ${cache_target} -C ${build_target}
 chmod +x ${build_target}/bin/tmate
 chmod +x ${build_target}/bin/launch
 
-ln -s ${build_target}/bin/tmate /app/tmate
-ln -s ${build_target}/bin/launch /app/launch
-
 mkdir -p $build/.profile.d
 echo 'export LD_LIBRARY_PATH=/app/lib' > $build/.profile.d/tmate.sh
 echo 'export TERM=screen-256color' >> $build/.profile.d/tmate.sh
+echo "export PATH=$PATH:/${build_target}/bin" >> $build/.profile.d/tmate.sh
 echo 'ssh-keygen -q -t rsa -f /home/vcap/.ssh/id_rsa -N ""' >> $build/.profile.d/tmate.sh
