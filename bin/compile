@@ -55,6 +55,7 @@ tar xzf ${cache_target} -C ${build_target}
 
 chmod +x ${build_target}/bin/tmate
 ln -s ${build_target}/bin/tmate /home/vcap/app
+ln -s ${build_target}/bin/unbuffer /home/vcap/app
 
 mkdir -p $build/.profile.d
 echo 'export LD_LIBRARY_PATH=/app/lib' > $build/.profile.d/tmate.sh
