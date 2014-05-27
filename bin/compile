@@ -22,7 +22,7 @@ libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
 expect_version="5.45"
 expect_dir="expect${expect_version}"
 expect_file="expect_dir.tar.gz"
-expect_url="http://downloads.sourceforge.net/project/expect/Expect/${expect_version}/expect${expect_version}.tar.gz"
+expect_url="http://hivelocity.dl.sourceforge.net/project/expect/Expect/${expect_version}/expect${expect_version}.tar.gz"
 
 cache_target=${cache}/${tmate_file}
 build_target=${build}
