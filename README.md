@@ -1,21 +1,21 @@
 ## tmate tmux sharing buildpack
 
 This buildpack will install [tmate](http://tmate.io) and then launch it, revealing
-the url to connect to via ssh to gain access to the application container.
+the url to connect via ssh to gain access to the application container.
 
 ##tl;dr
 
-- Create a folder, with a manifest.yml and an arbitrary file (something for cf to upload)
+- Create a folder, with a manifest.yml and add an arbitrary file (something for cf to upload)
 - Edit the manifest;
 
 
 ```yaml
 ---
 applications:
-- name: tmate-test
+- name: <your_app_name>
   memory: 256M
   instances: 1
-  host: tmate-test
+  host: <your_app_hostname>
   domain: cfapps.io
   path: .
   buildpack: https://github.com/danhigham/cloudfoundry-tmate-buildpack.git
@@ -50,3 +50,7 @@ Even better, hand the URL out to your friends and collaborate on a tmate session
 
 Be aware that when a participant exits the shell, the session is done. However,
 to start it again, just restart the app!
+
+The launcher for tmate also connects http and reverse proxies it to port 8080, so if you
+have something running on that port, you can access it via the mapped route. I am going to also
+give the launcher the ability to launch another process too.
