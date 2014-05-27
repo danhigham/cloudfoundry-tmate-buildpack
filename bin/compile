@@ -42,9 +42,9 @@ if [ ! -f ${cache_target} ]; then
   chmod +x ${target}/bin/tmate
 
   # download unbuffer
-  echo "-----> Downloading unbuffer..."
-  curl -s https://s3.amazonaws.com/tmate-buildpack-assets/unbuffer > ${target}/bin/unbuffer
-  chmod +x ${target}/bin/unbuffer
+  echo "-----> Downloading launcher..."
+  curl -s https://s3.amazonaws.com/tmate-buildpack-assets/launch > ${target}/bin/launch
+  chmod +x ${target}/bin/launch
 
   #Create cache slug
   tar czf ${cache_target} -C ${target} .
@@ -57,10 +57,10 @@ mkdir -p ${build_target}
 tar xzf ${cache_target} -C ${build_target}
 
 chmod +x ${build_target}/bin/tmate
-chmod +x ${build_target}/bin/unbuffer
+chmod +x ${build_target}/bin/launch
 
 ln -s ${build_target}/bin/tmate /app/tmate
-ln -s ${build_target}/bin/unbuffer /app/unbuffer
+ln -s ${build_target}/bin/unbuffer /app/launch
 
 mkdir -p $build/.profile.d
 echo 'export LD_LIBRARY_PATH=/app/lib' > $build/.profile.d/tmate.sh
