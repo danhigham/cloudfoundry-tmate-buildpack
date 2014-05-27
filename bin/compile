@@ -59,8 +59,8 @@ tar xzf ${cache_target} -C ${build_target}
 chmod +x ${build_target}/bin/tmate
 chmod +x ${build_target}/bin/launch
 
-ln -s ${build_target}/bin/tmate /app/tmate
-ln -s ${build_target}/bin/unbuffer /app/launch
+# ln -s ${build_target}/bin/tmate /app/tmate
+# ln -s ${build_target}/bin/launch /app/launch
 
 mkdir -p $build/.profile.d
 echo 'export LD_LIBRARY_PATH=/app/lib' > $build/.profile.d/tmate.sh
