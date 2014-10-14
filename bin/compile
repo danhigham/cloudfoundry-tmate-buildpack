@@ -29,7 +29,7 @@ if [ ! -f ${cache_target} ]; then
 
   echo "-----> Compiling libevent v${libe_version}..."
   #Compile libevent
-  curl -s ${libe_url} > ${libe_file}
+  curl -L -s ${libe_url} > ${libe_file}
   tar zxf ${libe_file}
   cd ${libe_dir}
   ./configure --prefix=${target} | indent
@@ -38,12 +38,12 @@ if [ ! -f ${cache_target} ]; then
 
   # download tmate
   echo "-----> Downloading tmate..."
-  curl -s https://s3.amazonaws.com/tmate-buildpack-assets/tmate > ${target}/bin/tmate
+  curl -L -s https://s3.amazonaws.com/tmate-buildpack-assets/tmate > ${target}/bin/tmate
   chmod +x ${target}/bin/tmate
 
   # download unbuffer
   echo "-----> Downloading launcher..."
-  curl -s https://s3.amazonaws.com/tmate-buildpack-assets/launch > ${target}/bin/launch
+  curl -L -s https://s3.amazonaws.com/tmate-buildpack-assets/launch > ${target}/bin/launch
   chmod +x ${target}/bin/launch
 
   #Create cache slug
