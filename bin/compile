@@ -14,7 +14,7 @@ mkdir -p ${cache}
 
 tmate_file="tmate.tgz"
 
-libe_version="2.0.21"
+libe_version="2.0.22"
 libe_dir="libevent-${libe_version}-stable"
 libe_file="${libe_dir}.tar.gz"
 libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
